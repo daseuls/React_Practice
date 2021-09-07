@@ -61,3 +61,77 @@ export default function App() {
   )
 }
 ```
+
+# 조건부 렌더링
+
+- 조건부 렌더링이란, 특정 조건에 따라 다른 결과물을 렌더링 하는 것 의미.
+
+```javascript
+// App.js
+// props isSpecial이 true일 때 '*'을 붙여 렌더링을 시켜주고 싶다면?
+
+export default function App() {
+  return (
+    <Wrapper>
+      <Hello name="다슬" color="red" isSpecial={true} />
+      <Hello color="blue" />
+    </Wrapper>
+  )
+}
+
+// Hello.js
+
+export default function Hello({ color, name, isSpecial }) {
+  return (
+    <div style={{ color }}>
+      {isSpecial ? <b>*</b> : null}
+      안녕하세요 {name}님 반가워요
+    </div>
+  )
+}
+```
+
+이것을 단축 평가 논리 계산법인 && 연산자를 통해 바꿔줄 수 있다.
+
+```javascript
+// App.js
+
+export default function App() {
+  return (
+    <Wrapper>
+      <Hello name="다슬" color="red" isSpecial={true} />
+      <Hello color="blue" />
+    </Wrapper>
+  )
+}
+
+// Hello.js
+
+export default function Hello({ color, name, isSpecial }) {
+  return (
+    <div style={{ color }}>
+      {isSpecial && <b>*</b>}
+      안녕하세요 {name}님 반가워요
+    </div>
+  )
+}
+```
+
+## props 값 설정을 생략하면 ={true}
+
+- 컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고 값 설정을 생략하면, 이를 `true`로 설정한 것으로 간주한다.
+
+```javascript
+// App.js
+
+export default function App() {
+  return (
+    <Wrapper>
+      <Hello name="다슬" color="red" isSpecial /> // 이 부분!!
+      <Hello color="blue" />
+    </Wrapper>
+  )
+}
+```
+
+- 이렇게 `isSpecial`이름만 넣어주면 `isSpecial={true}`와 동일한 의미이다.

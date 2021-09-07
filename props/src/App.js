@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper"
 export default function App() {
   return (
     <Wrapper>
-      <Hello name="다슬" color="red" />
+      <Hello name="다슬" color="red" isSpecial />
       <Hello color="blue" />
     </Wrapper>
   )
