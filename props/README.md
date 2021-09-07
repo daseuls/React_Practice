@@ -30,3 +30,34 @@ Hello.defaultProps = {
 # props.children
 
 - 컴포넌트 태그 사이에 넣은 값을 조회하고 싶을 땐, `props.children`을 조회하면 된다.
+
+```javascript
+// Wrapper.js
+
+import React from "react"
+
+export default function Wrapper({ children }) {
+  const style = {
+    border: "2px solid black",
+    padding: "16px",
+  }
+  return <div style={style}>{children}</div>
+}
+```
+
+```javascript
+// App.js
+
+import React from "react"
+import Hello from "./Hello"
+import Wrapper from "./Wrapper"
+
+export default function App() {
+  return (
+    <Wrapper>
+      <Hello name="다슬" color="red" />
+      <Hello color="blue" />
+    </Wrapper>
+  )
+}
+```
