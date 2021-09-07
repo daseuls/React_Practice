@@ -1,6 +1,8 @@
 # 비구조화 할당
 
 ```javascript
+// Hello.js
+
 export default function Hello(props) {
   return (
     <div style={{ color: props.color }}>안녕하세요 {props.name}님 반가워요</div>
@@ -11,6 +13,8 @@ export default function Hello(props) {
 를 이렇게 바꿀 수 있다.
 
 ```javascript
+// Hello.js
+
 export default function Hello({ color, name }) {
   return <div style={{ color }}>안녕하세요 {name}님 반가워요</div>
 }
