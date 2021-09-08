@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 
 export default function InputSample() {
   const [inputs, setInputs] = useState({
@@ -6,7 +6,9 @@ export default function InputSample() {
     nickname: "",
   })
 
-  const { name, nickname } = inputs
+  const nameInput = useRef()
+
+  const { name, nickname } = inputs // 비 구조화 할당을 통해 값 추출
   const onChange = (e) => {
     const { value, name } = e.target
     setInputs({
@@ -20,10 +22,18 @@ export default function InputSample() {
       name: "",
       nickname: "",
     })
+    nameInput.current.focus() // 초기화 버튼을 누르면 nameInput에 focus가 된다.
   }
+
   return (
     <div>
-      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="name"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+        ref={nameInput}
+      />
       <input
         name="nickname"
         placeholder="닉네임"
