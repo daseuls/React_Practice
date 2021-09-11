@@ -8,27 +8,10 @@ function User(props) {
   )
 }
 
-function UserList1() {
-  const users = [
-    {
-      id: 1,
-      username: "velopert",
-      email: "public.velopert@gmail.com",
-    },
-    {
-      id: 2,
-      username: "tester",
-      email: "tester@example.com",
-    },
-    {
-      id: 3,
-      username: "liz",
-      email: "liz@example.com",
-    },
-  ]
+function UserList1(props) {
   return (
     <div>
-      {users.map((el) => (
+      {props.users.map((el) => (
         <User user={el} key={el.id} />
       ))}
       {/* <User user={users[0]} />
